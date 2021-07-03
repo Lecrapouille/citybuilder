@@ -5,6 +5,7 @@
 #include <vector>
 #include <fstream>
 #include <sstream>
+#include <numeric>
 
 #include "city.hpp"
 #include "tile.hpp"
@@ -95,11 +96,11 @@ void City::load(std::string cityName, std::map<std::string, Tile>& tileAtlas)
 {
 	int width = 0;
 	int height = 0;
-	
+
 	std::ifstream inputFile(cityName + "_cfg.dat", std::ios::in);
-	
+
 	std::string line;
-	
+
 	while(std::getline(inputFile, line))
 	{
 	    std::istringstream lineStream(line);
@@ -130,19 +131,19 @@ void City::load(std::string cityName, std::map<std::string, Tile>& tileAtlas)
 	            }
 	    }
 	}
-	
+
 	inputFile.close();
-	
+
 	this->map.load(cityName + "_map.dat", width, height, tileAtlas);
 	tileChanged();
-	
+
 	return;
 }
 
 void City::save(std::string cityName)
 {
     std::ofstream outputFile(cityName + "_cfg.dat", std::ios::out);
-    
+
     outputFile << "width="              << this->map.width          << std::endl;
     outputFile << "height="             << this->map.height         << std::endl;
     outputFile << "day="                << this->day                << std::endl;
@@ -157,14 +158,14 @@ void City::save(std::string cityName)
     outputFile << "industrialTax="      << this->industrialTax      << std::endl;
     outputFile << "funds="              << this->funds              << std::endl;
     outputFile << "earnings="           << this->earnings           << std::endl;
-    
+
     outputFile.close();
-    
+
     this->map.save(cityName + "_map.dat");
-    
+
     return;
 }
-    
+
 void City::update(float dt)
 {
     double popTotal = 0;
