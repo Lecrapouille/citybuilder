@@ -1,6 +1,8 @@
 Creating A City Building Game With SFML
 ===========
 
+https://www.binpress.com/creating-city-building-game-with-sfml/
+
 *This is an old tutorial written several years ago for a website which no longer exists. There are no guarantees that
 it adheres to the modern best-practices, and it could do with several improvements, but I have migrated it here in
 case people still find it useful.*
